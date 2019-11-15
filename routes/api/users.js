@@ -14,9 +14,7 @@ router.post('/', [
         // check if valid body
         check('name', 'Name is required').not().isEmpty(),
         check('email', 'Email is invalid').isEmail(),
-        check('password', 'Password is required, Min Length: 6').isLength({
-            min: 6
-        })
+        check('password', 'Password is required, Min Length: 6').isLength({ min: 6 })
     ],
     async(req, res) => {
         console.log(req.body);
@@ -70,8 +68,6 @@ router.post('/', [
             console.log(error.message);
             res.status(500).send('Server error');
         }
-
-
     });
 
 
