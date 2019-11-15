@@ -1,3 +1,4 @@
 {
-    "mongoURI": "mongodb+srv://Gugu:Pwdalm123@cluster0-zztcl.mongodb.net/test?retryWrites=true&w=majority"
+    "mongoURI": "mongodb+srv://Gugu:Pwdalm123@cluster0-zztcl.mongodb.net/test?retryWrites=true&w=majority",
+    "jwtToken": "myToken"
 }

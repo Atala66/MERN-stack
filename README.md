@@ -2,7 +2,7 @@
 Mongo ATLAS:
 https://cloud.mongodb.com/v2/5dc93e44c56c981c06bc3921#clusters/connect?clusterId=Cluster0
 MONGO URI:
-mongodb+srv://Gugu:<password>@cluster0-zztcl.mongodb.net/test?retryWrites=true&w=majority
+mongodb+srv://Gugu:Pwdalm123@cluster0-zztcl.mongodb.net/test?retryWrites=true&w=majority
 MONGO SHELL METHODS:
 https://docs.mongodb.com/manual/reference/method/
 Express Validator:
@@ -11,3 +11,9 @@ Gravatar JS
 https://github.com/emerleite/node-gravata
 Bcrypt
 https://www.npmjs.com/package/bcrypt
+JWT:
+https://jwt.io/
+https://www.npmjs.com/package/jsonwebtoken
+
+# En el try se hacen las queries de mongo
+# Añadiendo auth como 2º parametro de cada url, hacemos la ruta privada y dependiente del token
