@@ -8,6 +8,7 @@ const { check, validationResult } = require('express-validator/check');
 // @route       GET api/profile/me
 // @descrition  get current user profile
 // @access      Private
+
 router.get('/me', auth, async(req, res) => {
     try {
         const profile = await Profile.findOne({ user: req.user.id }).populate('user', ['name', 'avatar']);
@@ -27,8 +28,8 @@ router.get('/me', auth, async(req, res) => {
 // @access      Private
 router.post('/', [
         auth, [
-            check('status', 'Status is required').not().isEmpty()
-            //  check('skills', 'Skills are required').not().isEmpty()
+            check('status', 'Status is required').not().isEmpty(),
+            check('skills', 'Skills are required').not().isEmpty()
         ]
     ],
     async(req, res) => {
