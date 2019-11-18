@@ -20,5 +20,5 @@ app.use('/api/users', require('./routes/api/users'));
 app.use('/api/posts', require('./routes/api/posts'));
 
 const PORT = process.env.PORT || 5000;
-
+// testing commit
 app.listen(PORT, () => { console.log(`Server started on port ${PORT}`)});
