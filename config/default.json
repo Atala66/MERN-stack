@@ -1,4 +1,6 @@
 {
     "mongoURI": "mongodb+srv://Gugu:Pwdalm123@cluster0-zztcl.mongodb.net/test?retryWrites=true&w=majority",
-    "jwtToken": "myToken"
+    "jwtToken": "myToken",
+    "githubClientId": "8cef974386380840a35f",
+    "githubSecret": "a39176006d6a34374be2558bf2ae98739169ec2f"
 }

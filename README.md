@@ -15,5 +15,9 @@ JWT:
 https://jwt.io/
 https://www.npmjs.com/package/jsonwebtoken
 
+# Por cada model, se crea una nueva collection en la db mongoDB Atlas
 # En el try se hacen las queries de mongo
 # Añadiendo auth como 2º parametro de cada url, hacemos la ruta privada y dependiente del token
+
+# githubClientId && githubToken/secret
+https://github.com/settings/applications/1176481
