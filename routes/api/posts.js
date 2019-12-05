@@ -56,6 +56,7 @@ router.get('/', auth, async(req, res) => {
 router.get('/:id', auth, async(req, res) => {
     try {
         const post = await Post.findById(req.params.id);
+        console.log(post);
         if (!post) {
             return res.status(404).json({ msg: 'Post not found' });
         }
@@ -69,10 +70,52 @@ router.get('/:id', auth, async(req, res) => {
     }
 });
 
-// // @route       DELETE api/posts/:post_id
-// // @descrition  Delete a post by id
+// @route       DELETE api/posts/:id
+// @descrition  Delete a post by id
+// @access      Private
+router.delete('/:id', auth, async(req, res) => {
+    try {
+        const post = await Post.findById(req.params.id);
+        if (!post) {
+            return res.status(404).json({ msg: 'Post not found' });
+        }
+        // // check user
+        // if (post.user.toString() !== req.user.id) {
+        //     return res.status(401).json({ msg: 'User not authorized' });
+        // }
+        await post.remove();
+        res.json({ msg: 'Post removed' });
+    } catch (err) {
+        console.log(err.message);
+        if (err.kind === 'ObjectId') {
+            return res.status(400).json({ msg: 'Invalid post id' });
+        }
+        res.status(500).send('Delete post failed');
+    }
+});
+
+
+// // @route       PUT api/posts/like/:id
+// // @descrition  Like a post
 // // @access      Private
-// router.delete('/', auth, async(req, res) => {
+// router.put('/like/:id', auth, async(req,res)=> {
+//     try{
+//         const post = await Post.findById(req.params.id);
+//     }catch(err){
+//         res.status(500).send('Like post failed');
+//     }
+
+// });
+
+// // @route       PUT api/posts/dislike/:id
+// // @descrition  Dislike a post
+// // @access      Private
+// router.put('/dislike/:id', auth, async(req,res)=> {
+//     try{
+//         const post = await Post.findById(req.params.id);
+//     }catch(err){
+//         res.status(500).send('Dislike post failed');
+//     }
 
 // });
 

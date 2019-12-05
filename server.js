@@ -1,4 +1,3 @@
-
 const express = require('express');
 const bodyParser = require('body-parser');
 const connectDB = require('./config/db');
@@ -7,7 +6,8 @@ const connectDB = require('./config/db');
 const app = express();
 // connect database
 connectDB();
-// Init middleware
+
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // home route
@@ -21,4 +21,4 @@ app.use('/api/posts', require('./routes/api/posts'));
 
 const PORT = process.env.PORT || 5000;
 // testing commit
-app.listen(PORT, () => { console.log(`Server started on port ${PORT}`)});
+app.listen(PORT, () => { console.log(`Server started on port ${PORT}`) });
