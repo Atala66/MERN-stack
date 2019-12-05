@@ -32,4 +32,5 @@ https://alligator.io/react/axios-react/
 
 # RUN BACKEND && FRONTEND IN THE SAME SERVER
  "concurrently": "^4.1.2",
- script: "dev": "concurrently \"npm run server\" \"npm run client\"",
+ in client package => "proxy": "http://localhost:5000",
+ in server package =>  "dev": "concurrently \"npm run server\" \"npm run client\"",
