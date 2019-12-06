@@ -22,13 +22,17 @@ https://github.com/settings/applications/1176481
 # En el try se hacen las queries de mongo
 # Añadiendo auth como 2º parametro de cada url, hacemos la ruta privada y dependiente del token
 
-
+# ----------------------------------------------------------------------------------------------------------------------------------------------------  #
 
 # FRONTEND
 npx create-react-app client
-
-AXIOS: Para peticiones HTTP
+# AXIOS: Para peticiones HTTP
 https://alligator.io/react/axios-react/
+# HOOKS
+useState() 
+https://es.reactjs.org/docs/hooks-state.html
+
+# ----------------------------------------------------------------------------------------------------------------------------------------------------  #
 
 # RUN BACKEND && FRONTEND IN THE SAME SERVER
  "concurrently": "^4.1.2",
