@@ -26,11 +26,18 @@ https://github.com/settings/applications/1176481
 
 # FRONTEND
 npx create-react-app client
+# Los ficheros .js para react deben ser .jsx
 # AXIOS: Para peticiones HTTP
 https://alligator.io/react/axios-react/
 # HOOKS
 useState() 
 https://es.reactjs.org/docs/hooks-state.html
+# REDUX
+https://carlosazaustre.es/como-funciona-redux-conceptos-basicos/
+
+# store --> import in App.jsx
+# actions --> dispatch actions
+# reducers  --> receive actions
 
 # ----------------------------------------------------------------------------------------------------------------------------------------------------  #
 
@@ -38,3 +45,4 @@ https://es.reactjs.org/docs/hooks-state.html
  "concurrently": "^4.1.2",
  in client package => "proxy": "http://localhost:5000",
  in server package =>  "dev": "concurrently \"npm run server\" \"npm run client\"",
+ npm run dev
