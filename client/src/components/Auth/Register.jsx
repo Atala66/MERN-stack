@@ -3,12 +3,14 @@ import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 // connect cmp with redux
 import { connect } from "react-redux";
+
 // import redux actions
 import {setAlert} from '../../actions/alert';
+import {registerUser} from '../../actions/auth';
 // props of cmp.
 import PropTypes from 'prop-types';
 
-const Register = ( { setAlert }) => {
+const Register = ( { setAlert, registerUser }) => {
   // initial value
   const [formData, setFormData] = useState({
     name: "",
@@ -29,23 +31,9 @@ const Register = ( { setAlert }) => {
       // equivalent to props.setAlert
       setAlert("Passwords don´t match", 'danger');
     } else {
+      registerUser({ name, email, password });
       console.log(formData);
     }
-    // // http request
-    // try {
-    //     const newUser = { name, email, password };
-    //     const config = {
-    //          headers :{
-    //              'Content-Type': 'application/json'
-    //          }
-    //     }
-    //     const body = JSON.stringify(newUser);
-    //     const res = await axios.post('/api/users', body, config);
-    //     console.log(res.data);
-
-    // }catch(err){
-    //     console.log(err.response.data);
-    // }
 
   };
   return (
@@ -62,9 +50,7 @@ const Register = ( { setAlert }) => {
               placeholder="Name"
               name="name"
               onChange={e => onChange(e)}
-              value={name}
-              required
-            />
+              value={name}/>
           </div>
           <div className="form-group">
             <input
@@ -72,9 +58,7 @@ const Register = ( { setAlert }) => {
               placeholder="Email Address"
               name="email"
               value={email}
-              onChange={e => onChange(e)}
-              required
-            />
+              onChange={e => onChange(e)}/>
             <small className="form-text">
               This site uses Gravatar so if you want a profile image, use a
               Gravatar email
@@ -86,9 +70,7 @@ const Register = ( { setAlert }) => {
               placeholder="Password"
               name="password"
               value={password}
-              onChange={e => onChange(e)}
-              minLength="6"
-            />
+              onChange={e => onChange(e)}/>
           </div>
           <div className="form-group">
             <input
@@ -96,9 +78,7 @@ const Register = ( { setAlert }) => {
               placeholder="Confirm Password"
               name="password2"
               value={password2}
-              onChange={e => onChange(e)}
-              minLength="6"
-            />
+              onChange={e => onChange(e)}/>
           </div>
           <input type="submit" className="btn btn-primary" value="Register" />
         </form>
@@ -112,8 +92,9 @@ const Register = ( { setAlert }) => {
 
 
 Register.propTypes = {
-  setAlert : PropTypes.func.isRequired
+  setAlert : PropTypes.func.isRequired,
+  registerUser: PropTypes.func.isRequired
 }
 
 // @params - state - action to dispatch 
-export default connect(null, {setAlert} )(Register);
+export default connect(null, {setAlert, registerUser} )(Register);
