@@ -1,16 +1,15 @@
 import React, { Fragment, useState } from "react";
-// import axios from 'axios';
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 // connect cmp with redux
 import { connect } from "react-redux";
-
+// props of cmp.
+import PropTypes from 'prop-types';
 // import redux actions
 import {setAlert} from '../../actions/alert';
 import {registerUser} from '../../actions/auth';
-// props of cmp.
-import PropTypes from 'prop-types';
 
-const Register = ( { setAlert, registerUser }) => {
+
+const Register = ( { setAlert, registerUser, isAuthenticated }) => {
   // initial value
   const [formData, setFormData] = useState({
     name: "",
@@ -32,10 +31,13 @@ const Register = ( { setAlert, registerUser }) => {
       setAlert("Passwords don´t match", 'danger');
     } else {
       registerUser({ name, email, password });
-      console.log(formData);
+      //console.log(formData);
     }
 
   };
+  if(isAuthenticated) {
+    return <Redirect to="/dashboard"/>
+  }
   return (
     <Fragment>
       <section className="container">
@@ -93,8 +95,12 @@ const Register = ( { setAlert, registerUser }) => {
 
 Register.propTypes = {
   setAlert : PropTypes.func.isRequired,
-  registerUser: PropTypes.func.isRequired
+  registerUser: PropTypes.func.isRequired,
 }
 
+const mapStateToProps = state => ({
+  isAuthenticated : state.auth.isAuthenticated
+})
+
 // @params - state - action to dispatch 
-export default connect(null, {setAlert, registerUser} )(Register);
+export default connect(mapStateToProps, {setAlert, registerUser} )(Register);

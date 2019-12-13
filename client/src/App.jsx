@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 // Switch can only have routes in it
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./components/Layout/Navbar";
@@ -9,10 +9,21 @@ import Register from "./components/Auth/Register";
 // redux
 import { Provider } from "react-redux";
 import store from "./store";
+import { loadUser } from './actions/auth';
+import setAuthToken from './utils/setAuthToken';
 
 import "./App.css";
 
-const App = () => (
+if(localStorage.token) {
+  setAuthToken(localStorage.token);
+}
+
+const App = () => { 
+  useEffect(() => {
+    store.dispatch(loadUser())
+  }, []); // array as 2º argument, only run once the user as the token is saved
+
+  return (
   // wrap all app in redux provider; store as param
   <Provider store={store}>
     <Router>
@@ -29,5 +40,5 @@ const App = () => (
       </Fragment>
     </Router>
   </Provider>
-);
+)};
 export default App;

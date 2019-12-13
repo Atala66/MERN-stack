@@ -32,6 +32,8 @@ https://alligator.io/react/axios-react/
 # HOOKS
 useState() 
 https://es.reactjs.org/docs/hooks-state.html
+useEffects()
+https://es.reactjs.org/docs/hooks-effect.html
 # REDUX
 https://carlosazaustre.es/como-funciona-redux-conceptos-basicos/
 
