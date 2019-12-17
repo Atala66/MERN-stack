@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { GET_PROFILE, PROFILE_ERROR } from './constants';
-
-import { setAlert } from './alert';
+// import { setAlert } from './alert';
 
 
 // get current user profile
