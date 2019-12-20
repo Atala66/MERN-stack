@@ -73,7 +73,7 @@ router.post('/', [
             }
             // create new Profile
             profile = new Profile(profileFields);
-            console.log('new profile::', profile);
+            // console.log('new profile::', profile);
             await profile.save();
             res.json(profile);
         } catch (error) {
