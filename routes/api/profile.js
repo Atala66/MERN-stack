@@ -57,12 +57,12 @@ router.post('/', [
             profileFields.skills = skills.split(',').map(skill => skill.trim());
         }
         // build social object
-        profileFields.socials = {};
-        if (youtube) profileFields.socials.youtube = youtube;
-        if (linkedin) profileFields.socials.linkedin = linkedin;
-        if (twitter) profileFields.socials.twitter = twitter;
-        if (facebook) profileFields.socials.facebook = facebook;
-        if (instagram) profileFields.socials.instagram = instagram;
+        profileFields.social = {};
+        if (youtube) profileFields.social.youtube = youtube;
+        if (linkedin) profileFields.social.linkedin = linkedin;
+        if (twitter) profileFields.social.twitter = twitter;
+        if (facebook) profileFields.social.facebook = facebook;
+        if (instagram) profileFields.social.instagram = instagram;
 
         try {
             let profile = await Profile.findOne({ user: req.user.id });
@@ -73,10 +73,12 @@ router.post('/', [
             }
             // create new Profile
             profile = new Profile(profileFields);
+            console.log('new profile::', profile);
             await profile.save();
-            return res.json(profile);
-        } catch (err) {
-            return res.status(500).send('Create/update profile failed');
+            res.json(profile);
+        } catch (error) {
+            console.log(error.message);
+            res.status(500).send('Create profile failed');
         }
 
     });

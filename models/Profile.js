@@ -7,15 +7,13 @@ const profileSchema = new mongoose.Schema({
         ref: 'user'
     },
     company: {
-        type: String,
-        required: true
+        type: String
     },
     website: {
         type: String,
     },
     location: {
-        type: String,
-        required: true
+        type: String
     },
     status: {
         type: String,
@@ -41,8 +39,7 @@ const profileSchema = new mongoose.Schema({
             required: true
         },
         location: {
-            type: String,
-            required: true
+            type: String
         },
         from: {
             type: Date
