@@ -44,7 +44,7 @@ Dashboard.propTypes = {
   profile: PropTypes.object.isRequired
 };
 
-const mapStateToProps = () => state => ({
+const mapStateToProps = state => ({
   auth: state.auth,
   profile: state.profile
 });

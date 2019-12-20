@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { createProfile } from "../../actions/profile";
 
-const CreateProfile = ({ createProfile, history }) => {
+const CreateProfile = ({ createProfile }) => {
   const [formData, setFormData] = useState({
     company: "",
     website: "",
@@ -19,9 +19,6 @@ const CreateProfile = ({ createProfile, history }) => {
     facebook: "",
     instagram: ""
   });
-
-  const [displaySocialInputs, toggleSocialInputs] = useState(false);
-
   const {
     company,
     website,
@@ -37,13 +34,15 @@ const CreateProfile = ({ createProfile, history }) => {
     instagram
   } = formData;
 
-  const onChange = e =>
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const [displaySocialInputs, toggleSocialInputs] = useState(false);
 
-  const onSubmit = e => {
+  const onChange =  e => 
+ setFormData({ ...formData, [e.target.name]: e.target.value });
+
+  const onSubmit =  e => {
     e.preventDefault();
-    console.log("create profile data:: ", formData);
-    createProfile(formData, history, false);
+    createProfile(formData);
+    console.log("create profile:: ", formData);
   };
 
   return (
@@ -212,13 +211,12 @@ const CreateProfile = ({ createProfile, history }) => {
               </div>
             </Fragment>
           )}
-
-          <input
+       <input
             type="submit"
             value="Submit"
             className="btn btn-primary my-1"
           />
-          <Link to="/dashboard" className="btn btn-light my-1">
+          <Link to="/" className="btn btn-light my-1">
             Go Back
           </Link>
         </form>
@@ -231,5 +229,4 @@ CreateProfile.propTypes = {
   createProfile: PropTypes.func.isRequired
 };
 
-// @params - state - action to dispatch
 export default connect(null, { createProfile })(withRouter(CreateProfile));

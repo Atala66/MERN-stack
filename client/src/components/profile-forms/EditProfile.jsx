@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useEffect } from "react";
-import { Link, withRouter, Redirect } from "react-router-dom"; 
+import { Link, withRouter } from "react-router-dom"; 
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { createProfile, getCurrentProfile } from "../../actions/profile";
@@ -24,7 +24,7 @@ const EditProfile = ({
     facebook: "",
     instagram: ""
   });
-
+ // toggle social data
   const [displaySocialInputs, toggleSocialInputs] = useState(false);
   useEffect(() => {
     getCurrentProfile();
@@ -37,11 +37,11 @@ const EditProfile = ({
       bio: loading || !profile.bio ? "" : profile.bio,
       githubusername:
         loading || !profile.githubusername ? "" : profile.githubusername,
-      youtube: loading || !profile.youtube ? "" : profile.youtube,
-      linkedin: loading || !profile.linkedin ? "" : profile.linkedin,
-      twitter: loading || !profile.twitter ? "" : profile.twitter,
-      facebook: loading || !profile.facebook ? "" : profile.facebook,
-      instagram: loading || !profile.instagram ? "" : profile.instagram
+      youtube: loading || !profile.social ? "" : profile.social.youtube,
+      linkedin: loading || !profile.social ? "" : profile.social.linkedin,
+      twitter: loading || !profile.social ? "" : profile.social.twitter,
+      facebook: loading || !profile.social ? "" : profile.social.facebook,
+      instagram: loading || !profile.social ? "" : profile.social.instagram
     });
   }, [loading]);
 
@@ -67,13 +67,12 @@ const EditProfile = ({
     e.preventDefault();
     console.log("edit profile form:: ", formData);
     createProfile(formData, history, true);
-    return <Redirect to="/dashboard"/>
   };
 
   return (
     <Fragment>
       <section className="container">
-        <h1 className="large text-primary">Create Your Profile</h1>
+        <h1 className="large text-primary">Edit Your Profile</h1>
         <p className="lead">
           <i className="fas fa-user"></i> Let's get some information to make
           your profile stand out
@@ -236,13 +235,13 @@ const EditProfile = ({
               </div>
             </Fragment>
           )}
-
-          <input
+       <input
             type="submit"
             value="Submit"
             className="btn btn-primary my-1"
           />
-          <Link to="/dashboard" className="btn btn-light my-1">
+ 
+          <Link to="/" className="btn btn-light my-1">
             Go Back
           </Link>
         </form>

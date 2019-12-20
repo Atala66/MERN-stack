@@ -21,7 +21,7 @@ const Login = ({ login, isAuthenticated }) => {
   const onSubmit = async e => {
     e.preventDefault();
     login(email, password);
-    console.log('user logged in');
+    console.log("login Data:: ", formData);
   };
 
   // redirect if logged in

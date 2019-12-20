@@ -35,7 +35,6 @@ export const createProfile = (formData, history, isEditing = false) => async dis
         if (!isEditing) {
             history.push('/dashboard');
         }
-
     } catch (err) {
         const errors = err.response.data.errors;
         if (errors) {
