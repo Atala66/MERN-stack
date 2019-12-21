@@ -35,6 +35,7 @@ export default function(state = initialState, action) {
             return {
                 ...state,
                 error: action.payload,
+                profile: null,
                 loading: false
             }
         default:
