@@ -42,11 +42,12 @@ router.post('/', [
 // @access      Private
 router.get('/', auth, async(req, res) => {
     try {
-        const posts = await Post.find().sort({ date: -1 }); // newest posts first
+        const posts = await Post.find().sort({ date: -1 }).populate('user', ['name', 'avatar']); // newest posts first
         res.json(posts);
+        // console.log('posts', posts);
     } catch (err) {
         console.log(err.message);
-        res.status(500).send('Get all post failed');
+        res.status(500).send('Get all posts failed');
     }
 
 });

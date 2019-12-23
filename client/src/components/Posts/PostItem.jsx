@@ -1,68 +1,46 @@
-import React, { Fragment, useEffect } from "react";
-import { Link } from 'react-router-dom';
-import Moment from 'react-moment';
+import React, { Fragment } from "react";
+import { Link } from "react-router-dom";
+import Moment from "react-moment";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
- import Spinner from "../Layout/Spinner";
 //  import { getPostById } from "../../actions/post";
 
-const PostItem = ({ auth, post: {  } }) => {
-//   useEffect(() => {
-//     getPostById();
-//   }, [getPostById]);
-
+const PostItem = ({
+    post: { name,text,avatar }
+  }) => {
   return (
     <div className="post bg-white p-1 my-1">
-    <div>
-      <a href="profile.html">
-        <img
-          className="round-img"
-          src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200"
-          alt=""
-        />
-        <h4>John Doe</h4>
-      </a>
+      <div>
+        <img src={avatar} alt="" className="round-img" />
+          <h4>{name}</h4>
+      </div>
+       <div>{ text }</div>
+      {/* <div>
+        <p className="my-1">
+            {  text }
+        </p>
+  <p className="post-date"> {  date }</p>
+        <button type="button" className="btn btn-light">
+          <i className="fas fa-thumbs-up"></i>
+          <span>4</span>
+        </button>
+        <button type="button" className="btn btn-light">
+          <i className="fas fa-thumbs-down"></i>
+        </button>
+        <a href="post.html" className="btn btn-primary">
+          Discussion <span className="comment-count">2</span>
+        </a>
+        <button type="button" className="btn btn-danger">
+          <i className="fas fa-times"></i>
+        </button>
+      </div> */}
     </div>
-    <div>
-      <p className="my-1">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint
-        possimus corporis sunt necessitatibus! Minus nesciunt soluta
-        suscipit nobis. Amet accusamus distinctio cupiditate blanditiis
-        dolor? Illo perferendis eveniet cum cupiditate aliquam?
-      </p>
-       <p className="post-date">
-          Posted on 04/16/2019
-      </p>
-      <button type="button" className="btn btn-light">
-        <i className="fas fa-thumbs-up"></i>
-        <span>4</span>
-      </button>
-      <button type="button" className="btn btn-light">
-        <i className="fas fa-thumbs-down"></i>
-      </button>
-      <a href="post.html" className="btn btn-primary">
-        Discussion <span className='comment-count'>2</span>
-      </a>
-      <button      
-      type="button"
-      className="btn btn-danger"
-    >
-      <i className="fas fa-times"></i>
-    </button>
-    </div>
-  </div>
-  )
+  );
 };
 
 PostItem.propTypes = {
-     getPostById: PropTypes.func.isRequired,
-     post: PropTypes.object.isRequired,
-     auth: PropTypes.object.isRequired
+  post: PropTypes.object.isRequired
 };
 
-const mapStateToProps = state => ({
-  post: state.post,
-  auth: state.auth
-});
 
-export default connect(mapStateToProps, { })(PostItem);
+export default PostItem;
