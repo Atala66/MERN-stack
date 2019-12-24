@@ -42,7 +42,7 @@ router.post('/', [
 // @access      Private
 router.get('/', auth, async(req, res) => {
     try {
-        const posts = await Post.find().sort({ date: -1 }).populate('user', ['name', 'avatar']); // newest posts first
+        const posts = await Post.find().sort({ date: -1 }) // newest posts first
         res.json(posts);
         // console.log('posts', posts);
     } catch (err) {

@@ -1,4 +1,4 @@
-import { GET_POSTS, GET_POST, POST_ERROR } from '../actions/constants';
+import { GET_POSTS, GET_POST, ADD_NEW_POST, ADD_LIKES, REMOVE_LIKES, POST_ERROR, DELETE_POST } from '../actions/constants';
 
 const intialState = {
     post: null,
@@ -19,6 +19,24 @@ export default function(state = intialState, action) {
             return {
                 ...state,
                 post: action.payload,
+                loading: false
+            }
+        case ADD_NEW_POST:
+            return {
+                ...state,
+                posts: [action.payload, ...state.posts],
+                loading: false
+            }
+        case DELETE_POST:
+            return {
+                ...state,
+                posts: state.posts.filter(post => post._id !== action.payload),
+                loading: false
+            }
+        case ADD_LIKES:
+            return {
+                ...state,
+                posts: state.posts.map(post => post._id === action.payload.id ? {...post, likes: action.payload.likes } : post),
                 loading: false
             }
         case POST_ERROR:

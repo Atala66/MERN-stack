@@ -17,7 +17,7 @@ export const Profile = ({
   match
 }) => {
   useEffect(() => {
-    getProfileById(match.params.id);
+    getProfileById(match.params.id); // get id from url
   }, [getProfileById, match.params.id]);
   return (
     <Fragment>

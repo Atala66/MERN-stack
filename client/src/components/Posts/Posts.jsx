@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import Spinner from "../Layout/Spinner";
 import  PostItem  from "./PostItem";
+import  PostForm  from "./PostForm";
 import { getPosts } from "../../actions/post";
 
 
@@ -14,7 +15,9 @@ const Posts = ({ getPosts, post: { posts, loading } }) => {
   <Spinner/>
    ): (
     <Fragment>
-      <h1>Posts</h1>
+      <h1 className="large text-primary">Posts</h1>
+      <p className="lead">Welcome to the comunity</p>
+       <PostForm/>
       <div className="posts">
         { posts.map(post =>(
           <PostItem key={post._id} post={post} />
