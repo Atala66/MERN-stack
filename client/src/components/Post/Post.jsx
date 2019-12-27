@@ -5,7 +5,9 @@ import PropTypes from "prop-types";
 import Spinner from "../Layout/Spinner";
 import PostItem from "../Posts/PostItem";
 import CommentForm from "./CommentForm";
+import CommentItem from "./CommentItem";
 import { getPostById } from "../../actions/post";
+
 
 
 const Post = ({ getPostById, post: { post, loading }, match }) => {
@@ -19,6 +21,11 @@ const Post = ({ getPostById, post: { post, loading }, match }) => {
       <Link to='/posts' className='btn btn-light'>Back to posts </Link>
       <PostItem post={post} showActions={false} />
       <CommentForm postId={ post._id} />
+      <div className="comments">
+        {  post.comments.map(comment =>(
+         <CommentItem key={comment._id} comment={comment} postId={post._id} />
+        ))}
+      </div>
     </Fragment>
   );
 };
