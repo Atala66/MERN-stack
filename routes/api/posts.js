@@ -136,4 +136,59 @@ router.put('/unlike/:id', auth, async(req, res) => {
 });
 
 
+// @route       POST api/posts/comment/:id
+// @descrition  Add a comment to a post
+// @access      Private
+router.post('/comment/:id', [
+        auth, [
+            check('text', 'Text is required').not().isEmpty()
+        ]
+    ],
+    async(req, res) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() })
+        }
+        try {
+            const user = await User.findById(req.user.id).select('-password');
+            const post = await Post.findById(req.params.id);
+            const newComment = {
+                text: req.body.text,
+                name: user.name,
+                avatar: user.avatar,
+                user: req.user.id
+            }
+            post.comments.unshift(newComment);
+            await post.save();
+            res.json(post.comments);
+        } catch (err) {
+            console.log(err.message);
+            res.status(500).send(' Add New comment failed');
+        }
+    }
+);
+
+// @route       POST api/posts/comment/:id/:comment_id
+// @descrition  Add a comment to a post
+// @access      Private
+router.delete('/comment/:id/comment_id', auth, async(req, res) => {
+    try {
+        const post = await Post.findById(req.params.id);
+        // extract comment
+        const comment = posts.find(comment => comment.id === req.params.comment._id);
+        if (!comment) {
+            return res.status(404).json({ msg: 'Comment  not found' });
+        }
+        post.comment.splice(comment, 1);
+        await post.remove();
+        res.json(post.comments);
+        res.json({ msg: 'Comment  removed' });
+
+    } catch (err) {
+        console.log(err.message);
+        res.status(500).send('New comment failed');
+    }
+});
+
+
 module.exports = router;

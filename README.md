@@ -30,7 +30,7 @@ npx create-react-app client
 # AXIOS: Para peticiones HTTP
 https://alligator.io/react/axios-react/
 # HOOKS
-useState() 
+useState()  para forms
 https://es.reactjs.org/docs/hooks-state.html
 useEffects()
 https://es.reactjs.org/docs/hooks-effect.html
@@ -40,6 +40,7 @@ https://carlosazaustre.es/como-funciona-redux-conceptos-basicos/
 # store --> import in App.jsx
 # actions --> dispatch actions
 # reducers  --> receive actions
+# mapStateToProps --> paso de datos de cmpt contenedores(dumb) a cmpt presentadores(smart)
 
 # ----------------------------------------------------------------------------------------------------------------------------------------------------  #
 

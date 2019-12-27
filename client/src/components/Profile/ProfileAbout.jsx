@@ -35,9 +35,9 @@ ProfileAbout.propTypes = {
   profile: PropTypes.object.isRequired
 };
 
-const mapStateToProps = state => ({
-  profile: state.profile,
-  auth: state.auth
-});
+// const mapStateToProps = state => ({
+//   profile: state.profile,
+//   auth: state.auth
+// });
 
-export default connect(mapStateToProps)(ProfileAbout);
+export default connect(null)(ProfileAbout);

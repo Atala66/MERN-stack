@@ -7,6 +7,7 @@ const app = express();
 // connect database
 connectDB();
 
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 // enable CORS
